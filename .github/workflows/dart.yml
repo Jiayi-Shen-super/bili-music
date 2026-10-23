@@ -33,8 +33,11 @@ jobs:
         working-directory: android
         run: ./gradlew assembleRelease
 
+      - name: List generated APK files
+        run: find . -name "*.apk" -type f
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: bili-music-apk
-          path: android/app/build/outputs/apk/**/*.apk
+          path: build/**/*.apk
