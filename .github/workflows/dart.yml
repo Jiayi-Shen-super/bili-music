@@ -19,15 +19,18 @@ jobs:
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: '3.44.0'
+          flutter-version: '3.44.0' # 保持你之前成功的版本
           channel: 'stable'
 
       - name: Install dependencies
         run: flutter pub get
 
-      - name: Build APK
-        run: flutter build apk --release
+      # 关键改动：直接用 Gradle 构建，绕过 flutter CLI 的 APK 定位逻辑
+      - name: Build APK with Gradle
+        working-directory: android
+        run: ./gradlew assembleRelease
 
+      # 从 Gradle 的实际输出目录上传
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
