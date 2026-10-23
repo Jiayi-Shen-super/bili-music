@@ -88,7 +88,8 @@ dependencies:
   open_filex: ^4.7.0
   saver_gallery: ^5.1.0
   webview_all: ^1.2.1
-  package_info_plus: ^10.2.2
+  # package_info_plus: ^10.2.2
+  package_info_plus: ^9.0.0  # 或明确写 ^9.0.1
   url_launcher: ^6.3.2
 
   # 桌面端
